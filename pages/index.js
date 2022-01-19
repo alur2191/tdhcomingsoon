@@ -96,7 +96,7 @@ function Home() {
                     agreement = !agreement
                     console.log(agreement);
                   }}></input>
-                  <label htmlFor="agreement">Я прочитал и согласен <Link href={{pathname: `/help/terms`}}><a>с условиями пользовательского соглашения</a></Link> и <Link href={{pathname: `/help/privacy`}}><a>c политика конфиденциальности</a></Link></label>
+                  <label htmlFor="agreement">Я прочитал и согласен <Link href={{pathname: `/help/terms`}}><a target="_blank">с условиями пользовательского соглашения</a></Link> и <Link href={{pathname: `/help/privacy`}}><a target="_blank">c политика конфиденциальности</a></Link></label>
                 </div>
                 <div style={{display:'flex', gap: 20, alignItems:'center'}}>
                   <div><input type="submit" value="Отправить"/></div>

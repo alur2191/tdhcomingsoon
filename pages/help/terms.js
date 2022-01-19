@@ -3,7 +3,7 @@ function Privacy() {
         <div style={{ padding: 100 }}>
             <h1>1. AGREEMENT TO TERMS</h1>
             <p>These Terms of Use constitute a legally binding agreement made between you, whether personally or on behalf of an
-                entity (“you”) and TruckDriver.help ("Company," “we," “us," or “our”), concerning your access to and use of the
+                entity (“you”) and TruckDriver.help ({`"`}Company,{`"`} “we,{`"`} “us,{`"`} or “our”), concerning your access to and use of the
                 http://www.truckdriver.help website as well as any other media form, media channel, mobile website or mobile
                 application related, linked, or otherwise connected thereto (collectively, the “Site”). You agree that by accessing
                 the Site, you have read, understood, and agreed to be bound by all of these Terms of Use. IF YOU DO NOT AGREE WITH
@@ -138,7 +138,7 @@ function Privacy() {
                 functionality, and may provide you with the opportunity to create, submit, post, display, transmit, perform,
                 publish, distribute, or broadcast content and materials to us or on the Site, including but not limited to text,
                 writings, video, audio, photographs, graphics, comments, suggestions, or personal information or other material
-                (collectively, "Contributions"). </p>
+                (collectively, {`"`}Contributions{`"`}). </p>
             <span>Contributions may be viewable by other users of the Site and through third-party websites. As such, any
                 Contributions you transmit may be treated as non-confidential and non-proprietary. When you create or make available
                 any Contributions, you thereby represent and warrant that:
@@ -206,7 +206,7 @@ function Privacy() {
             <h1>8. SUBMISSIONS
             </h1>
             <p>You acknowledge and agree that any questions, comments, suggestions, ideas, feedback, or other information regarding
-                the Site ("Submissions") provided by you to us are non-confidential and shall become our sole property. We shall own
+                the Site ({`"`}Submissions{`"`}) provided by you to us are non-confidential and shall become our sole property. We shall own
                 exclusive rights, including all intellectual property rights, and shall be entitled to the unrestricted use and
                 dissemination of these Submissions for any lawful purpose, commercial or otherwise, without acknowledgment or
                 compensation to you. You hereby waive all moral rights to any such Submissions, and you hereby warrant that any such
@@ -283,7 +283,7 @@ function Privacy() {
             <span>Informal Negotiations
             </span>
             <p>To expedite resolution and control the cost of any dispute, controversy, or claim related to these Terms of Use (each
-                "Dispute" and collectively, the “Disputes”) brought by either you or us (individually, a “Party” and collectively,
+                {`"`}Dispute{`"`} and collectively, the “Disputes”) brought by either you or us (individually, a “Party” and collectively,
                 the “Parties”), the Parties agree to first attempt to negotiate any Dispute (except those Disputes expressly
                 provided below) informally for at least thirty (30) days before initiating arbitration. Such informal negotiations
                 commence upon written notice from one Party to the other Party.
@@ -293,8 +293,8 @@ function Privacy() {
             <p>If the Parties are unable to resolve a Dispute through informal negotiations, the Dispute (except those Disputes
                 expressly excluded below) will be finally and exclusively resolved through binding arbitration. YOU UNDERSTAND THAT
                 WITHOUT THIS PROVISION, YOU WOULD HAVE THE RIGHT TO SUE IN COURT AND HAVE A JURY TRIAL. The arbitration shall be
-                commenced and conducted under the Commercial Arbitration Rules of the American Arbitration Association ("AAA") and,
-                where appropriate, the AAA{`'`}s Supplementary Procedures for Consumer Related Disputes ("AAA Consumer Rules"), both of
+                commenced and conducted under the Commercial Arbitration Rules of the American Arbitration Association ({`"`}AAA{`"`}) and,
+                where appropriate, the AAA{`'`}s Supplementary Procedures for Consumer Related Disputes ({`"`}AAA Consumer Rules{`"`}), both of
                 which are available at the AAA website: www.adr.org. Your arbitration fees and your share of arbitrator compensation
                 shall be governed by the AAA Consumer Rules and, where appropriate, limited by the AAA Consumer Rules. If such costs
                 are determined by the arbitrator to be excessive, we will pay all arbitration fees and expenses. The arbitration may

@@ -1,0 +1,142 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         Int        @id @default(autoincrement())
+  email      String     @unique
+  password   String
+  activated  Boolean    @default(false)
+  company    Company?
+  savedJobs  UserJobs[]
+  createdAt  DateTime   @default(now())
+  updated_at DateTime   @updatedAt
+
+  @@map(name: "user")
+}
+
+model UserJobs {
+  id     Int  @default(autoincrement())
+  user   User @relation(fields: [userId], references: [id])
+  job    Job  @relation(fields: [jobId], references: [id])
+  userId Int
+  jobId  Int
+
+  @@id([userId, jobId])
+}
+
+model Beta {
+  id       Int    @id @default(autoincrement())
+  company  String
+  mcnumber Int
+  usdot    Int
+  phone    Int
+  email    String
+  name     String
+  position String
+}
+
+// model Driver {
+//   id             Int      @id @default(autoincrement())
+//   firstname      String   @db.VarChar(200)
+//   lastname       String   @db.VarChar(200)
+//   gender         Boolean
+//   dob            DateTime
+//   city           String   @db.VarChar(200)
+//   state          String   @db.VarChar(200)
+//   zip            Int
+//   phone          Int
+//   second_phone   Int
+//   createdAt      DateTime @default(now())
+//   updated_at     DateTime @updatedAt
+//   exp_years      Int
+//   exp_months     Int
+//   violations     Int
+//   accidents      Int
+//   trailers       String[]
+//   endorsements   String[]
+//   employer_name  String[]
+//   employer_city  String[]
+//   employer_state String[]
+
+//   @@map(name: "driver")
+// }
+
+model Company {
+  id         Int       @id @default(autoincrement())
+  name       String    @db.VarChar(200)
+  mcnumber   Int
+  usdot      Int
+  phone      String    @db.VarChar(10)
+  website    String?   @db.VarChar(250)
+  city       String    @db.VarChar(200)
+  state      String    @db.VarChar(200)
+  zip        Int
+  trucks     Truck[]
+  trailers   Trailer[]
+  jobs       Job[]
+  dispatch24 Boolean
+  deposit    Int?
+  parking    String[]
+  logbook    String[]  @db.VarChar(200)
+  insurance  Boolean
+  user       User      @relation(fields: [user_id], references: [id])
+  user_id    Int       @unique
+  createdAt  DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+
+  @@map(name: "company")
+}
+
+model Truck {
+  id           Int      @id @default(autoincrement())
+  manufacturer String   @db.VarChar(200)
+  lease        Boolean
+  year_from    Int
+  year_to      Int
+  transmission String[] @db.VarChar(200)
+  company      Company  @relation(fields: [company_id], references: [id])
+  company_id   Int
+  createdAt    DateTime @default(now())
+  updated_at   DateTime @updatedAt
+
+  @@map(name: "truck")
+}
+
+model Trailer {
+  id           Int      @id @default(autoincrement())
+  trailer_type String[] @db.VarChar(200)
+  lease        Boolean
+  year_from    Int
+  year_to      Int
+  company      Company  @relation(fields: [company_id], references: [id])
+  company_id   Int
+  createdAt    DateTime @default(now())
+  updated_at   DateTime @updatedAt
+
+  @@map(name: "trailer")
+}
+
+model Job {
+  id           Int      @id @default(autoincrement())
+  truck        Boolean
+  type         String
+  salary_mile  Int?
+  salary_gross Int?
+  owner_gross  Int?
+  company      Company  @relation(fields: [company_id], references: [id])
+  company_id   Int
+  createdAt    DateTime @default(now())
+  updated_at   DateTime @updatedAt
+
+  UserJobs UserJobs[]
+  @@map(name: "job")
+}

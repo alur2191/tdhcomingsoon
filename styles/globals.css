@@ -1,9 +1,19 @@
+:root {
+  --margin-container: 0 150px;
+  --primary-bg: #FFFFFF;
+  --primary-border: 1px solid #C5C5C5;
+  --brand-color: #3C3C77;
+  --dark-border: 1px solid #afb2b4;
+  --small-gap: 5px;
+}
+
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #EEEFF4;
+  font-family: 'Inter', sans-serif;
 }
 
 a {
@@ -13,4 +23,90 @@ a {
 
 * {
   box-sizing: border-box;
+}
+input, select, textarea {
+  height: 20px;
+  border-radius: 6px;
+  border:var(--primary-border);
+  padding: 5px;
+  height: 33px;
+}
+
+select {
+  height: 33px;
+}
+
+option {
+  margin: 5px 0;
+}
+
+input[type="submit"]{
+  height: 100%;
+  padding: 10px 20px;
+}
+
+button {
+  cursor: pointer;
+  font: inherit;
+  color: white;
+  background-color: var(--brand-color);
+  border: var(--primary-border);
+  border-radius: 6px;
+  padding: 0.5rem 1.5rem;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+input[type=checkbox],
+input[type=radio]{
+  margin: 0;
+  margin-right: 5px
+}
+
+.required {
+  color: red;
+}
+
+.form {
+  background-color: var(--primary-bg);
+  padding: 30px 0;
+  border-radius: 6px;
+  margin: var(--margin-container);
+}
+
+.form > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+.form > form > div {
+  width: 600px;
+}
+
+.form-column {
+  display: flex; 
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-row > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row > div > input{
+  margin-top: var(--small-gap);
+}
+.form-row > div {
+  width: 100%;
 }

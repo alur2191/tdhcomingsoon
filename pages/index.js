@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useRef} from "react";
 import { useState } from 'react'
 import classes from'./index.module.css'
 import ReCAPTCHA from "react-google-recaptcha";
 import Image from 'next/image'
+import Link from 'next/link'
 
 function Home() {
     const [company, setCompany] = useState('')
@@ -12,14 +13,19 @@ function Home() {
     const [email, setEmail] = useState('')
     const [name, setName] = useState('')
     const [position, setPosition] = useState('')
-
+    
+    let agreement = false
     const submitData = async (e) => {
         
-        e.preventDefault()
+      e.preventDefault()
         if (grecaptcha.getResponse() === '') {
-            alert("Please click <I'm not a robot> before sending the job")
+            alert("Пожалуйста пройдите проверку reCAPTCHA для отправки анкеты")
+            return
         }
-        
+        if(!agreement){
+          alert("Вы должны согласится с условиями пользовательского соглашения и c политика конфиденциальности.")
+          return
+        }
         try {
             const body = { company,mcnumber,usdot,phone,email,name,position };
             const response = await fetch("/api/send/", {
@@ -28,8 +34,6 @@ function Home() {
                 body: JSON.stringify(body),
             })
             
-            console.log('submitting data');
-            console.log(response);
         
         }catch(error) {
             console.error(error);
@@ -87,8 +91,14 @@ function Home() {
                         <input type="text" placeholder="Должность" id="position" onChange={(e) => setPosition(e.target.value)} required/>
                     </div>
                 </div>
-                
-                <div style={{display:'flex', gap: 20, alignItems:'center', marginTop: 10}}>
+                <div style={{display:'flex',margin:"20px 0"}}>
+                  <input type="checkbox" id="agreement" name="agreement" onChange={()=>{
+                    agreement = !agreement
+                    console.log(agreement);
+                  }}></input>
+                  <label htmlFor="agreement">Я прочитал и согласен <Link href={{pathname: `/help/terms`}}><a>с условиями пользовательского соглашения</a></Link> и <Link href={{pathname: `/help/privacy`}}><a>c политика конфиденциальности</a></Link></label>
+                </div>
+                <div style={{display:'flex', gap: 20, alignItems:'center'}}>
                   <div><input type="submit" value="Отправить"/></div>
                   <ReCAPTCHA
                       size="normal"

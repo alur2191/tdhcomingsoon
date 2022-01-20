@@ -4,6 +4,8 @@ import ReCAPTCHA from "react-google-recaptcha";
 import Image from 'next/image'
 import Link from 'next/link'
 import { useForm } from "react-hook-form";
+import Head from 'next/head'
+
 
 function Home() {
     const [
@@ -39,6 +41,9 @@ function Home() {
     };
     return (
         <div className={classes.main}>
+            <Head>
+                <title>TruckDriver.help - Работа в траковых компаниях для CDL водителей</title>
+            </Head>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <Image
                     src="/logo.png"
@@ -138,14 +143,15 @@ function Home() {
                     }}></input>
                     <label htmlFor="agreement">Я прочитал и согласен с <Link href={{ pathname: `/help/terms` }}><a target="_blank">условиями пользовательского соглашения</a></Link>, и c <Link href={{ pathname: `/help/privacy` }}><a target="_blank">политика конфиденциальности</a></Link></label>
                 </div>
-                
+                <div style={{display:'flex', gap: 10, flexDirection: 'column', alignItems:'flex-start'}}>
                 {isSuccessfullySubmitted&&<span className="success">Спасибо, Ваша заявка отправлена! Мы свяжемся с Вами в ближайшее время.</span>}
-                <div>
-                    <div><input type="submit" value="Отправить" /></div>
-                    <ReCAPTCHA
+                <ReCAPTCHA
                         size="normal"
                         sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
                     />
+                
+                    <div><input type="submit" value="Отправить" /></div>
+                    
                 </div>
             </form>
         </div>

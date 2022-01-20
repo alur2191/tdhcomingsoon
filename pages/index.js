@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from 'react'
+import React,{useState} from "react";
 import classes from './index.module.css'
 import ReCAPTCHA from "react-google-recaptcha";
 import Image from 'next/image'
@@ -7,9 +6,13 @@ import Link from 'next/link'
 import { useForm } from "react-hook-form";
 
 function Home() {
-
-    const { register,  formState: { errors }, handleSubmit } = useForm();
+    const [
+        isSuccessfullySubmitted,
+        setIsSuccessfullySubmitted,
+    ] = useState(false);
+    const { register,  formState: { errors, isSubmitted }, handleSubmit, reset } = useForm();
     let agreement = false
+    
     const submitData = async ({company, mcnumber, usdot, phone, email, name, position}) => {
         if (grecaptcha.getResponse() === '') {
             alert("Пожалуйста пройдите проверку reCAPTCHA для отправки анкеты")
@@ -26,8 +29,10 @@ function Home() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body),
             })
-
-
+            setIsSuccessfullySubmitted(response.ok)
+            reset()
+            grecaptcha.reset();
+            setTimeout(()=>{setIsSuccessfullySubmitted(false)},10000)
         } catch (error) {
             console.error(error);
         }
@@ -133,6 +138,8 @@ function Home() {
                     }}></input>
                     <label htmlFor="agreement">Я прочитал и согласен с <Link href={{ pathname: `/help/terms` }}><a target="_blank">условиями пользовательского соглашения</a></Link>, и c <Link href={{ pathname: `/help/privacy` }}><a target="_blank">политика конфиденциальности</a></Link></label>
                 </div>
+                
+                {isSuccessfullySubmitted&&<span className="success">Спасибо, Ваша заявка отправлена! Мы свяжемся с Вами в ближайшее время.</span>}
                 <div>
                     <div><input type="submit" value="Отправить" /></div>
                     <ReCAPTCHA
@@ -140,7 +147,6 @@ function Home() {
                         sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
                     />
                 </div>
-
             </form>
         </div>
     );

@@ -8,9 +8,7 @@ export default async function (req, res) {
     }
     delete req.body['g-recaptcha-response']
     const { email, company, name, position } = req.body;
-    
     console.log('API running');
-    
     try {
         const beta = await prisma.beta.create({
             data: {

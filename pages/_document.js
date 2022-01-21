@@ -7,8 +7,7 @@ class MyDocument extends Document {
         return (
             <Html>
                 <Head>
-                    <link async href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600&display=swap" rel="stylesheet"
-                    />
+                    <link href="fonts/inter.ttf:300,600" rel="stylesheet"/>
                     <meta name="description" content="TruckDriver.help предоставляем эффективный сервис по поиску работы, а также размещению вакансий на работу. "></meta>
                     
                 </Head>

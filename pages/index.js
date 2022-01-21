@@ -108,6 +108,16 @@ function Home() {
                 <h3>Контактная Информация</h3>
                 <div className="form-row">
                     <div>
+                        <label htmlFor="fullname"><span className="required">*</span>Полное Имя</label>
+                        <input type="text" placeholder="Полное Имя" id="fullname" {...register("name", { required: {value:true,message:'Необходимо ввести полное имя'}})} />
+                        {errors.name && <span className="alert">{errors.name.message}</span>}
+                    </div>
+                    <div>
+                        <label htmlFor="position"><span className="required">*</span>Должность</label>
+                        <input type="text" placeholder="Должность" id="position" {...register("position", {  required: {value:true,message:'Необходимо ввести должноть в компании'} })} />
+                        {errors.position && <span className="alert">{errors.position.message}</span>}
+                    </div>
+                    <div>
                         <label htmlFor="phone"><span className="required">*</span>Телефон</label>
                         <input type="number" placeholder="Телефон" id="phone"  {...register('phone', {
                             required: {value:true,message:'Необходимо ввести номер телефона'},
@@ -130,16 +140,6 @@ function Home() {
                         }  })} />
                         {errors.email && <span className="alert">{errors.email.message}</span>}
 
-                    </div>
-                    <div>
-                        <label htmlFor="fullname"><span className="required">*</span>Полное Имя</label>
-                        <input type="text" placeholder="Полное Имя" id="fullname" {...register("name", { required: {value:true,message:'Необходимо ввести полное имя'}})} />
-                        {errors.name && <span className="alert">{errors.name.message}</span>}
-                    </div>
-                    <div>
-                        <label htmlFor="position"><span className="required">*</span>Должность</label>
-                        <input type="text" placeholder="Должность" id="position" {...register("position", {  required: {value:true,message:'Необходимо ввести должноть в компании'} })} />
-                        {errors.position && <span className="alert">{errors.position.message}</span>}
                     </div>
                 </div>
                 <div style={{ display: 'flex', flexDirection:'column', margin: '20px 0'}}>

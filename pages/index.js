@@ -12,19 +12,21 @@ function Home() {
         isSuccessfullySubmitted,
         setIsSuccessfullySubmitted,
     ] = useState(false);
+    const [checkedAgreement, setCheckedAgreement] = useState(false);
+    const [checkedEmail, setCheckedEmail] = useState(false);
     const { register,  formState: { errors, isSubmitted }, handleSubmit, reset } = useForm();
-    let agreement = false
-    let emailcheck = false
+    
     const submitData = async ({company, mcnumber, usdot, phone, email, name, position}) => {
         if (grecaptcha.getResponse() === '') {
             alert("Пожалуйста пройдите проверку reCAPTCHA для отправки анкеты")
             return
         }
-        if (!agreement) {
-            alert("Вы должны согласится с условиями пользовательского соглашения и c политика конфиденциальности")
+        if (!checkedAgreement) {
+            alert("Вы должны согласится с условиями пользовательского соглашения и c политика конфиденциальности")  
+            setTimeout(()=>{setIsSuccessfullySubmitted(false)},10000)
             return
         }
-        if (!emailcheck) {
+        if (!checkedEmail) {
             alert("Вы должны согласится получать письма от TruckDriver.Help")
             return
         }
@@ -142,15 +144,11 @@ function Home() {
                 </div>
                 <div style={{ display: 'flex', flexDirection:'column'}}>
                     <div style={{ display: 'flex', margin: "20px 0" }}>
-                        <input type="checkbox" id="agreement" name="agreement" onChange={() => {
-                            agreement = !agreement
-                        }}></input>
-                        <label   label htmlFor="agreement">Я прочитал и согласен с <Link href={{ pathname: `/help/terms` }}><a target="_blank">условиями пользовательского соглашения</a></Link>, и c <Link href={{ pathname: `/help/privacy` }}><a target="_blank">политика конфиденциальности</a></Link></label>
+                        <input type="checkbox" id="agreement" name="agreement" onChange={e => setCheckedAgreement(e.target.checked)}></input>
+                        <label htmlFor="agreement">Я прочитал и согласен с <Link href={{ pathname: `/help/terms` }}><a target="_blank">условиями пользовательского соглашения</a></Link>, и c <Link href={{ pathname: `/help/privacy` }}><a target="_blank">политика конфиденциальности</a></Link></label>
                     </div>
                     <div style={{ display: 'flex', alignItems:'center',margin: "20px 0" }}>
-                        <input type="checkbox" id="emailcheck" name="emailcheck" onChange={() => {
-                            emailcheck = !emailcheck
-                        }}></input>
+                        <input type="checkbox" id="emailcheck" name="emailcheck" onChange={e => setCheckedEmail(e.target.checked)}></input>
                         <label htmlFor="emailcheck">Я согласен получать письма по электронной почте на период бета-тестирования</label>
                     </div>
                     

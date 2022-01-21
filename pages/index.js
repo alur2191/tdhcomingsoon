@@ -69,7 +69,7 @@ function Home() {
                     </div>
                     <div>
                         <label htmlFor="mc-number"><span className="required">*</span>MC Номер</label>
-                        <input className="input-md" type="number" placeholder="########" id="mc-number" {...register('mcnumber', {
+                        <input className="input-md" type="number" placeholder="#######" id="mc-number" {...register('mcnumber', {
                             required: {value:true,message:'Необходимо ввести MC номер'},
                             minLength: {
                                 value: 5,

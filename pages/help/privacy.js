@@ -186,7 +186,7 @@ function Privacy() {
             <h1>Contact Us</h1>
             <p>If you have any questions about this Privacy Policy, You can contact us:</p>
             <ul>
-                <li>By email: support@truckdriver.help</li>
+                <li>By email: contact@truckdriver.help</li>
             </ul>
         </div>
     )

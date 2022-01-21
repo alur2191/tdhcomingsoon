@@ -432,7 +432,7 @@ function Privacy() {
             <p>In order to resolve a complaint regarding the Site or to receive further information regarding use of the Site,
                 please contact us at:
             </p>
-            <span>support@truckdriver.help
+            <span>contact@truckdriver.help
             </span>
         </div>
     )

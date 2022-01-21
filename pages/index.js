@@ -142,12 +142,12 @@ function Home() {
                         {errors.position && <span className="alert">{errors.position.message}</span>}
                     </div>
                 </div>
-                <div style={{ display: 'flex', flexDirection:'column'}}>
-                    <div style={{ display: 'flex', margin: "20px 0" }}>
+                <div style={{ display: 'flex', flexDirection:'column', margin: '20px 0'}}>
+                    <div style={{ display: 'flex'}}>
                         <input type="checkbox" id="agreement" name="agreement" onChange={e => setCheckedAgreement(e.target.checked)}></input>
                         <label htmlFor="agreement">Я прочитал и согласен с <Link href={{ pathname: `/help/terms` }}><a target="_blank">условиями пользовательского соглашения</a></Link>, и c <Link href={{ pathname: `/help/privacy` }}><a target="_blank">политика конфиденциальности</a></Link></label>
                     </div>
-                    <div style={{ display: 'flex', alignItems:'center',margin: "20px 0" }}>
+                    <div style={{ display: 'flex', alignItems:'center' }}>
                         <input type="checkbox" id="emailcheck" name="emailcheck" onChange={e => setCheckedEmail(e.target.checked)}></input>
                         <label htmlFor="emailcheck">Я согласен получать письма по электронной почте на период бета-тестирования</label>
                     </div>

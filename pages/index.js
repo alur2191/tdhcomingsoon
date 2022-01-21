@@ -127,7 +127,7 @@ function Home() {
                     </div>
                     <div>
                         <label htmlFor="fullname"><span className="required">*</span>Полное Имя</label>
-                        <input type="text" placeholder="Имя" id="fullname" {...register("name", { required: {value:true,message:'Необходимо ввести полное имя'}})} />
+                        <input type="text" placeholder="Полное Имя" id="fullname" {...register("name", { required: {value:true,message:'Необходимо ввести полное имя'}})} />
                         {errors.name && <span className="alert">{errors.name.message}</span>}
                     </div>
                     <div>
